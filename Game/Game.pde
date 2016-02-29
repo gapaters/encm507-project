@@ -2,6 +2,7 @@ int white = #FFFFFF;
 int black = #000000;
 int lightGray = #D3D3D3;
 TitlePage titlePage;
+InstructionsPage instructionsPage;
 States gameState = States.TITLE_PAGE;
 
 void setup()
@@ -9,6 +10,7 @@ void setup()
   size(600, 400);
   surface.setResizable(true);
   titlePage = new TitlePage();
+  instructionsPage = new InstructionsPage();
 }
 
 void draw()
@@ -19,11 +21,10 @@ void draw()
   		titlePage.display();
   	break;	
   	case INSTRUCTIONS_PAGE :
-  		titlePage.display();
-  		println("Instructions page");
+  		instructionsPage.display();
   	break;	
   	case LEVEL_SELECTION :
-  		println("Level selction");
+  		println("Level selection");
   	break;	
   	case MAIN_GAME :
   		titlePage.display();

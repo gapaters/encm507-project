@@ -1,9 +1,7 @@
-class TitlePage{
-TextBox title;
-TextBox names;
-Button playButton;
-Button instructionsButton;
-Button exitButton;
+class TitlePage
+{
+TextBox title, names;
+Button playButton, instructionsButton, exitButton;
 
 TitlePage()
 {

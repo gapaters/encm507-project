@@ -1,6 +1,5 @@
 class TextBox
 {
-	//float textSize, coordX, coordY;
 	String textLabel;
 	TextBox(String text)
 	{
@@ -13,5 +12,13 @@ class TextBox
 	  	textAlign(CENTER, CENTER); 
 	  	fill(black);
 	  	text(textLabel,coordX,coordY);
+	}
+
+	void display(float textSize, float coordX, float coordY, float textWidth, float textHeight)
+	{
+		textSize(textSize);
+	  	textAlign(CENTER, CENTER); 
+	  	fill(black);
+	  	text(textLabel, coordX, coordY, textWidth, textHeight);
 	}
 }
