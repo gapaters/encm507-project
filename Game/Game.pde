@@ -1,6 +1,7 @@
 int white = #FFFFFF;
 int black = #000000;
 TitlePage titlePage;
+States gameState = States.TITLE_PAGE;
 
 void setup()
 {
@@ -12,6 +13,9 @@ void setup()
 void draw()
 {
   background(white);
-  titlePage.display();
-  
+  switch (gameState) {
+  	case TITLE_PAGE :
+  		titlePage.display();
+  	break;	
+  }
 }
