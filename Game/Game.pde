@@ -3,6 +3,7 @@ int black = #000000;
 int lightGray = #D3D3D3;
 TitlePage titlePage;
 InstructionsPage instructionsPage;
+LevelSelectionPage levelSelectionPage;
 States gameState = States.TITLE_PAGE;
 PImage background;
 
@@ -11,6 +12,7 @@ void setup()
   size(864, 574);
   surface.setResizable(true);
   titlePage = new TitlePage();
+  levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
   background = loadImage("ctrainBackground.jpg");
 }
@@ -27,7 +29,8 @@ void draw()
   		instructionsPage.display();
   	break;	
   	case LEVEL_SELECTION :
-  		println("Level selection");
+      levelSelectionPage.display();
+  		//println("Level selection");
   	break;	
   	case MAIN_GAME :
   		titlePage.display();
