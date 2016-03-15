@@ -51,4 +51,14 @@ class Button
 		}
 	}
 
+	void setText(String text)
+	{
+		buttonLabel = text;
+		buttonText.setText(text);
+	}
+
+	void setState(States state)
+	{
+		buttonState = state;
+	}
 }

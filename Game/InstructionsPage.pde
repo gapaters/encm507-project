@@ -9,7 +9,7 @@ class InstructionsPage
 		instructions = new TextBox("How to Play\n<Insert instructions here>");
 		scoring = new TextBox("Scoring Mechanism\n<Insert scoring rules here>");
 		levels = new TextBox("Level Differences\n<Insert level differences here>");
-		playButton = new Button("Play", States.MAIN_GAME);
+		playButton = new Button("Play", States.LEVEL_SELECTION);
 		menuButton = new Button("Return to Main Menu", States.TITLE_PAGE);
 	}
 
