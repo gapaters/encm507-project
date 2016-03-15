@@ -4,18 +4,21 @@ int lightGray = #D3D3D3;
 TitlePage titlePage;
 InstructionsPage instructionsPage;
 States gameState = States.TITLE_PAGE;
+PImage background;
 
 void setup()
 {
-  size(600, 400);
+  size(864, 574);
   surface.setResizable(true);
   titlePage = new TitlePage();
   instructionsPage = new InstructionsPage();
+  background = loadImage("ctrainBackground.jpg");
 }
 
 void draw()
 {
-  background(white);
+  image(background, 0, 0); 
+  // cannot make it be background, since it complains when varying window size
   switch (gameState) {
   	case TITLE_PAGE :
   		titlePage.display();
