@@ -32,10 +32,18 @@ void draw()
       levelSelectionPage.display();
   		//println("Level selection");
   	break;	
-  	case MAIN_GAME :
+  	case MAIN_GAME_EASY :
   		titlePage.display();
-  		println("Main game page");
+  		println("Main game easy page");
   	break;	
+    case MAIN_GAME_MEDIUM :
+      titlePage.display();
+      println("Main game medium page");
+    break;  
+    case MAIN_GAME_HARD :
+      titlePage.display();
+      println("Main game hard page");
+    break; 
   	case TRANSITION_PAGE :
   		println("Transition page");
   	break;
