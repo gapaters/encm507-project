@@ -4,6 +4,7 @@ class Button
 	String buttonLabel;
 	TextBox buttonText;
 	States buttonState;
+	boolean clicked = false;
 	Button(String label, States state)
 	{
 		buttonState = state;
@@ -18,6 +19,10 @@ class Button
 		if(mousePressed && mouseHover())
 		{
 			gameState = buttonState;
+			clicked = true;
+		}
+		else if (mousePressed && !mouseHover()) {
+			clicked = false;
 		}
 
 		stroke(black);
@@ -41,7 +46,7 @@ class Button
 
 	void update()
 	{
-		if (mouseHover())
+		if (mouseHover() || clicked)
 		{
 			fill(lightGray);
 		}
