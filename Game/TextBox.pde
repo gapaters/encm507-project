@@ -21,4 +21,9 @@ class TextBox
 	  	fill(black);
 	  	text(textLabel, coordX, coordY, textWidth, textHeight);
 	}
+
+	void setText(String text)
+	{
+		textLabel = text;
+	}
 }

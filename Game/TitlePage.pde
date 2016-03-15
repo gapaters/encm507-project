@@ -7,7 +7,7 @@ TitlePage()
 {
 	title = new TextBox("Caught up in the C-Train!");
 	names = new TextBox("By Gareth Paterson and Aaron Lai");
-	playButton = new Button("Play", States.MAIN_GAME);
+	playButton = new Button("Play", States.LEVEL_SELECTION);
 	instructionsButton = new Button("Instructions", States.INSTRUCTIONS_PAGE);
 	exitButton = new Button("Exit", States.EXIT);
 }
