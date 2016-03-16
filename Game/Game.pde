@@ -52,7 +52,8 @@ void draw()
   	break;	
   	case EXIT :
   		titlePage.display();
-  		println("Exiting program...");	
-  	break;		
+  		println("Exiting program...");
+      exit();	
+  	break;	
   }
 }
