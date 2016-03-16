@@ -20,7 +20,7 @@ class LevelSelectionPage
 	void display()
 	{
 		title.display(height/20, width/2, height/15);
-
+		levelDifficulty.display(height/30, width/2, height/3.5, width*0.25, height/10);
 		menuButton.display(height/30, width/2, height/1.2, width*0.35, height/10);
 	}
 }

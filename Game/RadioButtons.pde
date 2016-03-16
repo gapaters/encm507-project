@@ -18,9 +18,12 @@ class RadioButtons
 		}
 	}
 
-	void display()
+	void display(float textSize, float x, float y, float w, float h)
 	{
-
+		for (int i = 0; i < buttons.length; i++)
+		{
+			buttons[i].display(textSize, x, y + i*100, w, h);
+		}
 	}
 
 }
