@@ -13,7 +13,7 @@ class Button
 		buttonText = new TextBox(buttonLabel);
 	}
 
-	void display(float text, float x, float y, float w, float h)
+	void display(float textSize, float x, float y, float w, float h)
 	{
 		update();
 		if(mousePressed && mouseHover())
@@ -27,7 +27,7 @@ class Button
 
 		stroke(black);
 		rect(x, y, w, h);
-		buttonText.display(text, x, y);
+		buttonText.display(textSize, x, y);
 		coordX = x;
 		coordY = y;
 		buttonWidth = w;
