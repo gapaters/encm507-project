@@ -34,6 +34,27 @@ class Button
 		buttonHeight = h;
 	}
 
+	void displayWithoutUpdatingState(float textSize, float x, float y, float w, float h)
+	{
+		update();
+		if(mousePressed && mouseHover())
+		{
+			clicked = true;
+		}
+		else if (mousePressed && !mouseHover()) 
+		{
+			clicked = false;
+		}
+
+		stroke(black);
+		rect(x, y, w, h);
+		buttonText.display(textSize, x, y);
+		coordX = x;
+		coordY = y;
+		buttonWidth = w;
+		buttonHeight = h;
+	}
+
 	boolean mouseHover()
 	{
 		if(mouseX > (coordX - buttonWidth/2) && mouseX < (coordX + buttonWidth/2) && 

@@ -7,8 +7,8 @@ class RadioButtons
 	{
 		if (labels.length != states.length)
 		{
-			println("RadioButtons - Lengths are not matching! # of labels = %d, # of States: %d", 
-				labels.length, states.length);
+			println("RadioButtons - Lengths are not matching! # of labels = ", labels.length, 
+				" , # of States: ", states.length);
 		}
 
 		buttons = new Button[labels.length];
@@ -22,7 +22,13 @@ class RadioButtons
 	{
 		for (int i = 0; i < buttons.length; i++)
 		{
-			buttons[i].display(textSize, x, y + i*100, w, h);
+			buttons[i].update();
+			buttons[i].displayWithoutUpdatingState(textSize, x, y + i*100, w, h);
+			if (buttons[i].clicked)
+			{
+				selectedButton = i;
+				//println("Selected button changed! ", i); // for debugging
+			}
 		}
 	}
 
