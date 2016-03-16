@@ -22,6 +22,14 @@ class TextBox
 	  	text(textLabel, coordX, coordY, textWidth, textHeight);
 	}
 
+	void displayBox(float textSize, float coordX, float coordY, float boxWidth, float boxHeight){
+		rectMode(CENTER);
+		stroke(black);
+		fill(white);
+		rect(coordX, coordY, boxWidth, boxHeight);
+		this.display(textSize, coordX, coordY);
+	}
+
 	void setText(String text)
 	{
 		textLabel = text;

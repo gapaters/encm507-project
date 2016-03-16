@@ -1,9 +1,12 @@
 int white = #FFFFFF;
 int black = #000000;
 int lightGray = #D3D3D3;
+int darkGray = #A9A9A9;
+int navyBlue = #000080;
 TitlePage titlePage;
 InstructionsPage instructionsPage;
 LevelSelectionPage levelSelectionPage;
+MainGamePage mainGamePage;
 States gameState = States.TITLE_PAGE;
 PImage background;
 
@@ -14,11 +17,13 @@ void setup()
   titlePage = new TitlePage();
   levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
+  mainGamePage = new MainGamePage();
   background = loadImage("ctrainBackground.jpg");
 }
 
 void draw()
 {
+	background(black);
   image(background, 0, 0); 
   // cannot make it be background, since it complains when varying window size
   switch (gameState) {
@@ -33,8 +38,8 @@ void draw()
   		//println("Level selection");
   	break;	
   	case MAIN_GAME :
-  		titlePage.display();
-  		println("Main game page");
+  		mainGamePage.display();
+  		//println("Main game page");
   	break;	
   	case TRANSITION_PAGE :
   		println("Transition page");
