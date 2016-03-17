@@ -23,7 +23,7 @@ class RadioButtons
 		for (int i = 0; i < buttons.length; i++)
 		{
 			buttons[i].update();
-			buttons[i].displayWithoutUpdatingState(textSize, x, y + i*100, w, h);
+			buttons[i].displayWithoutUpdatingState(textSize, x, y + i * height/5, w, h);
 			if (buttons[i].clicked)
 			{
 				selectedButton = i;
