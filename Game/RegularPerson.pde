@@ -3,7 +3,7 @@ class RegularPerson implements Passenger
 	boolean hover = false;
 	boolean clicked = false;
 	float bx = width/20, by = height/2;
-	float shapeWidth = width/15, shapeHeight = height/9.5; // will need to make variable based on grid shape
+	float shapeWidth = 2 * width/15, shapeHeight = height/9.5; // will need to make variable based on grid shape
 
 	RegularPerson()
 	{
