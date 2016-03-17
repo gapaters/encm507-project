@@ -3,6 +3,7 @@ class MainGamePage{
 	Button closeDoors;
 	int[][] trainGrid;
 	String stationName = "Shawnessy";
+	int startTime;
 
 	MainGamePage(){
 		station = new TextBox(stationName);
@@ -21,6 +22,7 @@ class MainGamePage{
 
 		timer.displayBox(height/20, width*4/5, height/20, width/7, height/14);
 		timerClock.displayBox(height/20, width*4/5, height/7, width/7, height/10);
+		timerClock.setText(str(timer()));
 
 		closeDoors.display(height/30, width*9/10, height/1.05, width/6, height/15);
 
@@ -37,5 +39,13 @@ class MainGamePage{
 	      		rect (x*width/15, y*height/9.5, width/15, height/9.5);
 	    	}
 	  	}
+	}
+
+	int timer(){
+		return startTime - millis()/1000;
 	}	
+
+	void setStartTime(int start){
+		startTime = start;
+	}
 }

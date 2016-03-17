@@ -18,6 +18,9 @@ class Button
 		update();
 		if(mousePressed && mouseHover())
 		{
+			if(buttonState == States.MAIN_GAME){
+				mainGamePage.setStartTime(120);
+			}
 			gameState = buttonState;
 			clicked = true;
 		}
