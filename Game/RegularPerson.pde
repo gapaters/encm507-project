@@ -1,61 +1,67 @@
 class RegularPerson implements Passenger
 {
-	PShape shape;
 	boolean hover = false;
-	boolean locked = false;
-	float bdifx = 0.0, bdify = 0.0, bx, by;
-	float shapeWidth = 1.0, shapeHeight = 2.0;
+	boolean clicked = false;
+	float bx = width/20, by = height/2;
+	float shapeWidth = width/15, shapeHeight = height/9.5; // will need to make variable based on grid shape
+
+	RegularPerson()
+	{
+		rectMode(CENTER);
+	}
 
 	void display()
 	{
-		updateHovering();
-  		rect(bx, by, shapeWidth, shapeHeight);
-	}
+		if (mousePressed && hovering())
+		{
+			mousePressedAndHovering();
+			mouseDragged();
+		}
+		else if (!mousePressed)
+		{
+			mouseReleased();
+		}
 
-	void updateHovering()
+  		rect(bx, by, shapeWidth, shapeHeight);
+	}	
+
+	boolean hovering()
 	{
-		if (mouseX > bx-shapeWidth && mouseX < bx+shapeWidth && 
-			mouseY > by-shapeHeight && mouseY < by+shapeHeight) 
+		if(mouseX > (bx - shapeWidth/2) && mouseX < (bx + shapeWidth/2) && 
+			mouseY > (by - shapeHeight/2) && mouseY < (by + shapeHeight/2))
 		{
 			hover = true;  
-			if(!locked) 
-			{ 
-			  stroke(255); fill(153);
-			} 
 		} 
 		else 
 		{
-			stroke(153);
-			fill(153);
 			hover = false;
 		}
+		return hover;
 	}
 
-	void mousePressed()
+	void mousePressedAndHovering()
 	{
 		if(hover)
 		{
-			locked = true;
+			clicked = true;
 		}
 		else
 		{
-			locked = false;
+			clicked = false;
 		}
-		bdifx = mouseX - bx;
-		bdify = mouseY - by;
 	}
 
 	void mouseDragged()
 	{
-		if (locked)
+		if (clicked)
 		{
-			bx = mouseX - bdifx;
-			by = mouseY - bdify;
+			bx = mouseX;
+			by = mouseY;
 		}
 	}
 
 	void mouseReleased()
 	{
-		locked = false;
+		clicked = false;
 	}
 }

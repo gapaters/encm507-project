@@ -1,5 +1,5 @@
 interface Passenger
 {
 	void display();
-	void updateHovering();
+	boolean hovering();
 }
