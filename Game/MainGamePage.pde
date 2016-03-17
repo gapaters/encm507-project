@@ -4,13 +4,14 @@ class MainGamePage{
 	int[][] trainGrid;
 	String stationName = "Shawnessy";
 	int startTime;
+	int timeRemaining = 120;
 
 	MainGamePage(){
 		station = new TextBox(stationName);
 		score = new TextBox("Score");
 		scoreNumber = new TextBox("0");
 		timer = new TextBox("Timer");
-		timerClock = new TextBox("2:00");
+		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
 	}
 
@@ -42,7 +43,7 @@ class MainGamePage{
 	}
 
 	int timer(){
-		return startTime - millis()/1000;
+		return timeRemaining + (startTime - millis())/1000;
 	}	
 
 	void setStartTime(int start){
