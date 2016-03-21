@@ -7,6 +7,8 @@ TitlePage titlePage;
 InstructionsPage instructionsPage;
 LevelSelectionPage levelSelectionPage;
 MainGamePage mainGamePage;
+TransitionPage transitionPage;
+GameCompletionPage gameCompletionPage;
 States gameState = States.TITLE_PAGE;
 PImage background;
 String[] stations = new String[4];
@@ -19,6 +21,9 @@ void setup()
   levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
+  transitionPage = new TransitionPage();
+  gameCompletionPage = new GameCompletionPage();
+
   background = loadImage("media/ctrainBackground.jpg");
 }
 
@@ -36,21 +41,18 @@ void draw()
   	break;	
   	case LEVEL_SELECTION :
       levelSelectionPage.display();
-  		//println("Level selection");
   	break;	
   	case MAIN_GAME :
   		mainGamePage.display();
-  		//println("Main game page");
   	break;	
   	case TRANSITION_PAGE :
-  		println("Transition page");
+      transitionPage.display();
   	break;
   	case GAME_COMPLETION :
-  		println("Game complete!");	
+      gameCompletionPage.display();
   	break;	
   	case EXIT :
   		titlePage.display();
-  		println("Exiting program...");
       exit();	
   	break;	
   }
