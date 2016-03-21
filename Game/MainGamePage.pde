@@ -2,12 +2,13 @@ class MainGamePage{
 	TextBox station, score, scoreNumber, timer, timerClock;
 	Button closeDoors;
 	int[][] trainGrid;
-	String stationName = "Shawnessy";
+	String stationName;
 	int startTime;
 	int timeRemaining = 120;
+	int transition = 0;
 
 	MainGamePage(){
-		station = new TextBox(stationName);
+		station = new TextBox("");
 		score = new TextBox("Score");
 		scoreNumber = new TextBox("0");
 		timer = new TextBox("Timer");
@@ -16,7 +17,8 @@ class MainGamePage{
 	}
 
 	void display(){
-		station.displayBox(height/20, width/4, height/20, width/5, height/14);
+		station.displayBox(height/20, width/4, height/20, width/3, height/14);
+		station.setText(stations[transition]);
 		closeDoors.display(height/30, width/4, height/7, width/6, height/15);
 
 		score.displayBox(height/20, width*3/5, height/20, width/7, height/14);

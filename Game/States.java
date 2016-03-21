@@ -7,5 +7,8 @@ public enum States
 	TRANSITION_PAGE, 
 	GAME_COMPLETION, 
 	EXIT,
+	EASY,
+	MEDIUM,
+	HARD,
 	OTHER // used for level selection
 }

@@ -28,8 +28,14 @@ class RadioButtons
 			{
 				selectedButton = i;
 				//println("Selected button changed! ", i); // for debugging
+				//println("Selected button state: "+ buttons[selectedButton].buttonState);
 			}
 		}
+	}
+
+	States getDifficulty(){
+		println(selectedButton);
+		return buttons[selectedButton].buttonState;
 	}
 
 }

@@ -9,6 +9,7 @@ LevelSelectionPage levelSelectionPage;
 MainGamePage mainGamePage;
 States gameState = States.TITLE_PAGE;
 PImage background;
+String[] stations = new String[4];
 
 void setup()
 {
