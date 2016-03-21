@@ -5,7 +5,7 @@ class VerticalBike implements Passenger
 	float bx = width/20, by = height/2;
 	float shapeWidth = 1 * width/15, shapeHeight = 3 * height/9.5; // will need to make variable based on grid shape
 
-	WheelchairPerson()
+	VerticalBike()
 	{
 		rectMode(CENTER);
 	}

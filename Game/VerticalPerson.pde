@@ -5,7 +5,7 @@ class VerticalPerson implements Passenger
 	float bx = width/20, by = height/2;
 	float shapeWidth = width/15, shapeHeight = 2 * height/9.5; // will need to make variable based on grid shape
 
-	RegularPerson()
+	VerticalPerson()
 	{
 		rectMode(CENTER);
 	}
