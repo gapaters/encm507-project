@@ -18,7 +18,7 @@ void setup()
   levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
-  background = loadImage("ctrainBackground.jpg");
+  background = loadImage("media/ctrainBackground.jpg");
 }
 
 void draw()
