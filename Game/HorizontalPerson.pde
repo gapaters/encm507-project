@@ -1,4 +1,4 @@
-class RegularPerson implements Passenger
+class HorizontalPerson implements Passenger
 {
 	boolean hover = false;
 	boolean clicked = false;
