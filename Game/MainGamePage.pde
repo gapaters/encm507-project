@@ -60,7 +60,7 @@ class MainGamePage{
 	}
 
 	void transition(){
-		transition ++;
+		transition++;
 		println(transition);
 	}
 

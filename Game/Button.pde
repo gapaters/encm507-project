@@ -5,6 +5,8 @@ class Button
 	TextBox buttonText;
 	States buttonState;
 	boolean clicked = false;
+	boolean pressed = false;
+
 	Button(String label, States state)
 	{
 		buttonState = state;
@@ -18,29 +20,19 @@ class Button
 		update();
 		if(mousePressed && mouseHover())
 		{
-			if(buttonState == States.MAIN_GAME){
-				mainGamePage.setStartTime(millis());
-				gameState = buttonState;
+			if (!clicked)
+			{
+				updateState();
+				clicked = true;
 			}
-			else if (buttonState == States.TRANSITION_PAGE) {
-				mainGamePage.transition();
-				//println("transition");
-				if(mainGamePage.isFinished()){
-					//println("game complete");
-					gameState = States.GAME_COMPLETION;
-					//println(gameState);
-				}
-				else {
-					gameState = buttonState;
-				}
+			else
+			{
+				clicked = false;
+				delay(300);
 			}
-			else {
-				gameState = buttonState;
-			}
-
-			clicked = true;
 		}
-		else if (mousePressed && !mouseHover()) {
+		else if (mousePressed && !mouseHover()) 
+		{
 			clicked = false;
 		}
 
@@ -51,6 +43,34 @@ class Button
 		coordY = y;
 		buttonWidth = w;
 		buttonHeight = h;
+	}
+
+	void updateState()
+	{
+		if(buttonState == States.MAIN_GAME)
+		{
+			mainGamePage.setStartTime(millis());
+			gameState = buttonState;
+		}
+		else if (buttonState == States.TRANSITION_PAGE) 
+		{
+			mainGamePage.transition();
+			//println("transition");
+			if(mainGamePage.isFinished())
+			{
+				//println("game complete");
+				gameState = States.GAME_COMPLETION;
+				//println(gameState);
+			}
+			else 
+			{
+				gameState = buttonState;
+			}
+		}
+		else 
+		{
+			gameState = buttonState;
+		}
 	}
 
 	void displayWithoutUpdatingState(float textSize, float x, float y, float w, float h)
