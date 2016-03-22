@@ -21,8 +21,8 @@ void setup()
   levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
-  transitionPage = new TransitionPage();
-  gameCompletionPage = new GameCompletionPage();
+  transitionPage = new TransitionPage(mainGamePage);
+  gameCompletionPage = new GameCompletionPage(mainGamePage);
 
   background = loadImage("media/ctrainBackground.jpg");
 }
@@ -52,7 +52,6 @@ void draw()
       gameCompletionPage.display();
   	break;	
   	case EXIT :
-  		titlePage.display();
       exit();	
   	break;	
   }

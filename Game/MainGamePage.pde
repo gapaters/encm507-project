@@ -6,6 +6,7 @@ class MainGamePage{
 	int startTime;
 	int timeRemaining = 120;
 	int transition = 0;
+	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -57,4 +58,25 @@ class MainGamePage{
 	void setStartTime(int start){
 		startTime = start;
 	}
+
+	int scoreStation1()
+	{
+		return scoreStation1;
+	}
+
+	int scoreStation2()
+	{
+		return scoreStation2;
+	}
+
+	int scoreStation3()
+	{
+		return scoreStation3;
+	}
+
+	int scoreStation4()
+	{
+		return scoreStation4;
+	}
+
 }

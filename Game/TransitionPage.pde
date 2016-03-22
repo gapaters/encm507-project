@@ -2,19 +2,20 @@ class TransitionPage
 {
 	TextBox title, scoreBreakdown;
 	Button nextStation;
-	int score1 = 0, score2 = 0, score3 = 0, score4 = 0;
+	MainGamePage mainGame_;
 
-  	TransitionPage()
+  	TransitionPage(MainGamePage mainGame)
 	{
-		title = new TextBox("Game Finished!");
+		mainGame_ = mainGame;
+		title = new TextBox("Leaving station");
 		
 		scoreBreakdown = new TextBox(
-			"Score Breakdown\nStation 1: " + score1 + 
-			"\nStation 2: " + score2 + 
-			"\nStation 3: " + score3 + 
-			"\nStation 4: " + score4);
+			"Score Breakdown\nStation 1: " + mainGame_.scoreStation1() + 
+			"\nStation 2: " + mainGame_.scoreStation2() + 
+			"\nStation 3: " + mainGame_.scoreStation3() + 
+			"\nStation 4: " + mainGame_.scoreStation4());
 
-		nextStation = new Button("Arrived at next station", States.MAIN_GAME);
+		nextStation = new Button("Go to next station", States.MAIN_GAME);
 	}
 
 	void display()
