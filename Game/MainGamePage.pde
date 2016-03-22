@@ -59,6 +59,19 @@ class MainGamePage{
 		startTime = start;
 	}
 
+	void transition(){
+		transition ++;
+		println(transition);
+	}
+
+	boolean isFinished(){
+		if(transition >= stations.length){
+			transition = 0;
+			return true;
+		}
+		return false;
+	}
+
 	int scoreStation1()
 	{
 		return scoreStation1;
@@ -78,5 +91,4 @@ class MainGamePage{
 	{
 		return scoreStation4;
 	}
-
 }
