@@ -57,4 +57,17 @@ class MainGamePage{
 	void setStartTime(int start){
 		startTime = start;
 	}
+
+	void transition(){
+		transition ++;
+		println(transition);
+	}
+
+	boolean isFinished(){
+		if(transition >= stations.length){
+			transition = 0;
+			return true;
+		}
+		return false;
+	}
 }

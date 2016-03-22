@@ -20,8 +20,24 @@ class Button
 		{
 			if(buttonState == States.MAIN_GAME){
 				mainGamePage.setStartTime(millis());
+				gameState = buttonState;
 			}
-			gameState = buttonState;
+			else if (buttonState == States.TRANSITION_PAGE) {
+				mainGamePage.transition();
+				//println("transition");
+				if(mainGamePage.isFinished()){
+					//println("game complete");
+					gameState = States.GAME_COMPLETION;
+					//println(gameState);
+				}
+				else {
+					gameState = buttonState;
+				}
+			}
+			else {
+				gameState = buttonState;
+			}
+
 			clicked = true;
 		}
 		else if (mousePressed && !mouseHover()) {

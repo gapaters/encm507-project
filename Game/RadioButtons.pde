@@ -34,7 +34,7 @@ class RadioButtons
 	}
 
 	States getDifficulty(){
-		println(selectedButton);
+		//println(selectedButton);
 		return buttons[selectedButton].buttonState;
 	}
 
