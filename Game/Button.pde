@@ -10,7 +10,6 @@ class Button
 	Button(String label, States state)
 	{
 		buttonState = state;
-		rectMode(CENTER);
 		buttonLabel = label;
 		buttonText = new TextBox(buttonLabel);
 	}
@@ -35,7 +34,7 @@ class Button
 		{
 			clicked = false;
 		}
-
+		rectMode(CENTER);
 		stroke(black);
 		rect(x, y, w, h);
 		buttonText.display(textSize, x, y);

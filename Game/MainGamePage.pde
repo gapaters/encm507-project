@@ -20,9 +20,9 @@ class MainGamePage{
 	}
 
 	void display(){
-		station.displayBox(height/20, width/4, height/20, width/3, height/14);
+		station.displayBox(height/20, width/4, height/20, width/2, height/14);
 		station.setText(stations[transition]);
-		closeDoors.display(height/30, width/4, height/7, width/6, height/15);
+		closeDoors.display(height/30, width/4, height/7, width/5, height/15);
 
 		score.displayBox(height/20, width*3/5, height/20, width/7, height/14);
 		scoreNumber.displayBox(height/20, width*3/5, height/7, width/7, height/10);
