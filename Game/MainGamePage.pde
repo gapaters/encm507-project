@@ -1,7 +1,7 @@
 class MainGamePage{
 	TextBox station, score, scoreNumber, timer, timerClock;
 	Button closeDoors;
-	int[][] trainGrid;
+	int[][] trainGrid = new int[16][6];
 	String stationName;
 	int startTime;
 	int timeRemaining = 20;
@@ -9,6 +9,7 @@ class MainGamePage{
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
 	PassengerGenerator generator;
 	Passenger[] passengerList;
+	WheelchairPerson test;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -19,6 +20,7 @@ class MainGamePage{
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
 		generator = new PassengerGenerator();
 		passengerList = generator.generate();
+		test = new WheelchairPerson();
 	}
 
 	void display(){
@@ -39,9 +41,11 @@ class MainGamePage{
 	    	for (int y=3; y<9; y++) {
 	      		if(((x > 2 && x < 8) || (x > 9 && x < 15)) && ((y >= 3 && y < 5) || (y > 6 && y <=9))){
 	      			fill(navyBlue);
+	      			trainGrid[x-1][y-3] = navyBlue;
 	      		}
 	      		else{
 	      			fill(darkGray);
+	      			trainGrid[x-1][y-3] = darkGray;
 	      		}
 	      		rect (x*gridWidth, y*gridHeight, gridWidth, gridHeight);
 	    	}
