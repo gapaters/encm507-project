@@ -27,6 +27,7 @@ class RadioButtons
 			if (buttons[i].clicked)
 			{
 				selectedButton = i;
+				Game.difficulty = i + 1;
 				//println("Selected button changed! ", i); // for debugging
 				//println("Selected button state: "+ buttons[selectedButton].buttonState);
 			}

@@ -7,7 +7,8 @@ class MainGamePage{
 	int timeRemaining = 20;
 	int transition = 0;
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
-	VerticalPerson test;
+	PassengerGenerator generator;
+	Passenger[] passengerList;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -16,7 +17,8 @@ class MainGamePage{
 		timer = new TextBox("Timer");
 		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
-		test = new VerticalPerson();
+		generator = new PassengerGenerator();
+		passengerList = generator.generate();
 	}
 
 	void display(){
@@ -52,7 +54,12 @@ class MainGamePage{
 	  		}
 	  	}
 
-	  	test.display();
+
+	  	for (int i = 0; i < passengerList.length; i++)
+	  	{
+	  		passengerList[i].display();
+	  	}
+
 	}
 
 	int timer(){

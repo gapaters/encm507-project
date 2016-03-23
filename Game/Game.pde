@@ -13,6 +13,7 @@ States gameState = States.TITLE_PAGE;
 PImage background;
 String[] stations = new String[4];
 float gridWidth, gridHeight;
+static int difficulty = 1;
 
 void setup()
 {
