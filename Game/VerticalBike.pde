@@ -2,12 +2,13 @@ class VerticalBike implements Passenger
 {
 	boolean hover = false;
 	boolean clicked = false;
+	boolean active =  false;
 	float bx = width/20, by = height/2;
-	float shapeWidth = 1 * width/15, shapeHeight = 3 * height/9.5; // will need to make variable based on grid shape
+	float shapeWidth = 1 * gridWidth, shapeHeight = 3 * gridHeight; // will need to make variable based on grid shape
 
 	VerticalBike()
 	{
-		rectMode(CENTER);
+		rectMode(CORNER);
 	}
 
 	void display()
@@ -15,20 +16,25 @@ class VerticalBike implements Passenger
 		if (mousePressed && hovering())
 		{
 			mousePressedAndHovering();
-			mouseDragged();
+		}
+		else if (mousePressed) {
+			redraw();
 		}
 		else if (!mousePressed)
 		{
 			mouseReleased();
+			bx -= bx%(gridWidth);
+			by -= by%(gridHeight);
 		}
 
+		rectMode(CORNER);
   		rect(bx, by, shapeWidth, shapeHeight);
 	}	
 
 	boolean hovering()
 	{
-		if(mouseX > (bx - shapeWidth/2) && mouseX < (bx + shapeWidth/2) && 
-			mouseY > (by - shapeHeight/2) && mouseY < (by + shapeHeight/2))
+		if(mouseX > (bx) && mouseX < (bx + shapeWidth) && 
+			mouseY > (by) && mouseY < (by + shapeHeight))
 		{
 			hover = true;  
 		} 
@@ -44,6 +50,7 @@ class VerticalBike implements Passenger
 		if(hover)
 		{
 			clicked = true;
+			active = true;
 		}
 		else
 		{
@@ -51,9 +58,9 @@ class VerticalBike implements Passenger
 		}
 	}
 
-	void mouseDragged()
+	void move()
 	{
-		if (clicked)
+		if (active)
 		{
 			bx = mouseX;
 			by = mouseY;
@@ -63,5 +70,12 @@ class VerticalBike implements Passenger
 	void mouseReleased()
 	{
 		clicked = false;
+	}
+
+	void redraw(){
+		if(active){
+			move();
+			active = false;
+		}
 	}
 }

@@ -7,7 +7,7 @@ class MainGamePage{
 	int timeRemaining = 120;
 	int transition = 0;
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
-	WheelchairPerson test;
+	VerticalPerson test;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -16,7 +16,7 @@ class MainGamePage{
 		timer = new TextBox("Timer");
 		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
-		test = new WheelchairPerson();
+		test = new VerticalPerson();
 	}
 
 	void display(){

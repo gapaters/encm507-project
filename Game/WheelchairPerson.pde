@@ -2,12 +2,13 @@ class WheelchairPerson implements Passenger
 {
 	boolean hover = false;
 	boolean clicked = false;
+	boolean active = false;
 	float bx = width/20, by = height/2;
 	float shapeWidth = 2 * gridWidth, shapeHeight = 2* gridHeight; // will need to make variable based on grid shape
 
 	WheelchairPerson()
 	{
-		
+		rectMode(CORNER);
 	}
 
 	void display()
@@ -15,13 +16,15 @@ class WheelchairPerson implements Passenger
 		if (mousePressed && hovering())
 		{
 			mousePressedAndHovering();
-			mouseDragged();
+		}
+		else if (mousePressed) {
+			redraw();
 		}
 		else if (!mousePressed)
 		{
 			mouseReleased();
-			bx -= bx%(width/18);
-			by -= by%(height/13);
+			bx -= bx%(gridWidth);
+			by -= by%(gridHeight);
 		}
 
 		rectMode(CORNER);
@@ -30,8 +33,8 @@ class WheelchairPerson implements Passenger
 
 	boolean hovering()
 	{
-		if(mouseX > (bx - shapeWidth) && mouseX < (bx + shapeWidth) && 
-			mouseY > (by - shapeHeight) && mouseY < (by + shapeHeight))
+		if(mouseX > (bx) && mouseX < (bx + shapeWidth) && 
+			mouseY > (by) && mouseY < (by + shapeHeight))
 		{
 			hover = true;  
 		} 
@@ -47,6 +50,7 @@ class WheelchairPerson implements Passenger
 		if(hover)
 		{
 			clicked = true;
+			active = true;
 		}
 		else
 		{
@@ -54,9 +58,9 @@ class WheelchairPerson implements Passenger
 		}
 	}
 
-	void mouseDragged()
+	void move()
 	{
-		if (clicked)
+		if (active)
 		{
 			bx = mouseX;
 			by = mouseY;
@@ -66,5 +70,12 @@ class WheelchairPerson implements Passenger
 	void mouseReleased()
 	{
 		clicked = false;
+	}
+
+	void redraw(){
+		if(active){
+			move();
+			active = false;
+		}
 	}
 }
