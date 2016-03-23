@@ -28,8 +28,8 @@ class RadioButtons
 			{
 				selectedButton = i;
 				Game.difficulty = i + 1;
-				//println("Selected button changed! ", i); // for debugging
-				//println("Selected button state: "+ buttons[selectedButton].buttonState);
+				//println("Selected button changed! ", i);
+				//println("Game.difficulty: " + Game.difficulty);
 			}
 		}
 	}

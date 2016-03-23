@@ -3,8 +3,10 @@ class Passenger
 	boolean hover = false;
 	boolean clicked = false;
 	boolean active = false;
+	boolean hadInitialLocationSet = false;
 	float bx = width/20, by = height/2;
 	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
+	int passengerColor = #000000;
 
 	Passenger(int hSize, int vSize)
 	{
@@ -12,6 +14,22 @@ class Passenger
 		shapeHeight = vSize * gridHeight;
 
 		rectMode(CORNER);
+	}
+
+	Passenger(int hSize, int vSize, int passengerColor)
+	{
+		shapeWidth = hSize * gridWidth;
+		shapeHeight = vSize * gridHeight;
+		this.passengerColor = passengerColor;
+
+		rectMode(CORNER);
+	}
+
+	void setStartingLocation(float x, float y)
+	{
+		bx = x;
+		by = y;
+		hadInitialLocationSet = true;
 	}
 
 	void display()
@@ -30,6 +48,7 @@ class Passenger
 			by -= by%(gridHeight);
 		}
 
+		fill(passengerColor);
 		rectMode(CORNER);
   		rect(bx, by, shapeWidth, shapeHeight);
 	}	

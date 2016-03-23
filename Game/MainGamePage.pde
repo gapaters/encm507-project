@@ -19,6 +19,7 @@ class MainGamePage{
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
 		generator = new PassengerGenerator();
 		passengerList = generator.generate();
+		setStartingLocationsInPassengerQueue();
 	}
 
 	void display(){
@@ -118,5 +119,19 @@ class MainGamePage{
 	int scoreStation4()
 	{
 		return scoreStation4;
+	}
+
+	void setStartingLocationsInPassengerQueue()
+	{
+		int xCounter = 1;
+		int yCounter = 9;
+		for (int i = 0; i < passengerList.length; i++)
+		{
+			if(!passengerList[i].hadInitialLocationSet)
+			{
+				passengerList[i].setStartingLocation(xCounter * gridWidth, yCounter * gridHeight);
+				xCounter += passengerList[i].shapeWidth;
+			}
+		}
 	}
 }
