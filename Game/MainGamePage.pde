@@ -9,7 +9,6 @@ class MainGamePage{
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
 	PassengerGenerator generator;
 	Passenger[] passengerList;
-	WheelchairPerson test;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -20,7 +19,6 @@ class MainGamePage{
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
 		generator = new PassengerGenerator();
 		passengerList = generator.generate();
-		test = new WheelchairPerson();
 	}
 
 	void display(){
