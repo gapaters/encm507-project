@@ -7,6 +7,7 @@ class MainGamePage{
 	int timeRemaining = 120;
 	int transition = 0;
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
+	WheelchairPerson test;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -15,6 +16,7 @@ class MainGamePage{
 		timer = new TextBox("Timer");
 		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
+		test = new WheelchairPerson();
 	}
 
 	void display(){
@@ -29,7 +31,7 @@ class MainGamePage{
 		timerClock.displayBox(height/20, width*4/5, height/7, width/7, height/10);
 		timerClock.setText(str(timer()));
 
-		rectMode(CENTER);
+		rectMode(CORNER);
 		for (int x=1; x<17; x++) {
 			//println(x);
 	    	for (int y=3; y<9; y++) {
@@ -39,16 +41,18 @@ class MainGamePage{
 	      		else{
 	      			fill(darkGray);
 	      		}
-	      		rect (x*width/17, y*height/12, width/17, height/12);
+	      		rect (x*gridWidth, y*gridHeight, gridWidth, gridHeight);
 	    	}
 	  	}
 
 	  	for(int x=1; x<17; x++){
 	  		for(int y=9; y < 12; y++){
 	  			fill(white);
-	      		rect(x*width/17, y*height/12, width/17, height/12);
+	      		rect(x*gridWidth, y*gridHeight, gridWidth, gridHeight);
 	  		}
 	  	}
+
+	  	test.display();
 	}
 
 	int timer(){

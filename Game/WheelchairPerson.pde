@@ -3,11 +3,11 @@ class WheelchairPerson implements Passenger
 	boolean hover = false;
 	boolean clicked = false;
 	float bx = width/20, by = height/2;
-	float shapeWidth = 2 * width/15, shapeHeight = 2* height/9.5; // will need to make variable based on grid shape
+	float shapeWidth = 2 * gridWidth, shapeHeight = 2* gridHeight; // will need to make variable based on grid shape
 
 	WheelchairPerson()
 	{
-		rectMode(CENTER);
+		
 	}
 
 	void display()
@@ -20,15 +20,18 @@ class WheelchairPerson implements Passenger
 		else if (!mousePressed)
 		{
 			mouseReleased();
+			bx -= bx%(width/18);
+			by -= by%(height/13);
 		}
 
+		rectMode(CORNER);
   		rect(bx, by, shapeWidth, shapeHeight);
 	}	
 
 	boolean hovering()
 	{
-		if(mouseX > (bx - shapeWidth/2) && mouseX < (bx + shapeWidth/2) && 
-			mouseY > (by - shapeHeight/2) && mouseY < (by + shapeHeight/2))
+		if(mouseX > (bx - shapeWidth) && mouseX < (bx + shapeWidth) && 
+			mouseY > (by - shapeHeight) && mouseY < (by + shapeHeight))
 		{
 			hover = true;  
 		} 

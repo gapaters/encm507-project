@@ -12,11 +12,14 @@ GameCompletionPage gameCompletionPage;
 States gameState = States.TITLE_PAGE;
 PImage background;
 String[] stations = new String[4];
+float gridWidth, gridHeight;
 
 void setup()
 {
-  size(864, 574);
-  surface.setResizable(true);
+  size(800, 600);
+  gridWidth = width/18;
+  gridHeight = height/13;
+  //surface.setResizable(true);
   titlePage = new TitlePage();
   levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
