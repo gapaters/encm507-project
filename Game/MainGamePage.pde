@@ -4,7 +4,7 @@ class MainGamePage{
 	int[][] trainGrid;
 	String stationName;
 	int startTime;
-	int timeRemaining = 120;
+	int timeRemaining = 20;
 	int transition = 0;
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
 	VerticalPerson test;
@@ -56,7 +56,22 @@ class MainGamePage{
 	}
 
 	int timer(){
-		return timeRemaining + (startTime - millis())/1000;
+		int time = timeRemaining + (startTime - millis())/1000;
+		if(time <= 0){
+			mainGamePage.transition();
+			//println("transition");
+			if(mainGamePage.isFinished())
+			{
+				//println("game complete");
+				gameState = States.GAME_COMPLETION;
+				//println(gameState);
+			}
+			else 
+			{
+				gameState = States.TRANSITION_PAGE;
+			}
+		}
+		return time;
 	}	
 
 	void setStartTime(int start){
