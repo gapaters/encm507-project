@@ -7,9 +7,12 @@ class Passenger
 	float bx = width/20, by = height/2;
 	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
 	int passengerColor = #000000;
+	int lineHeight, lineWidth;
 
 	Passenger(int hSize, int vSize)
 	{
+		lineHeight = vSize;
+		lineWidth = hSize;
 		shapeWidth = hSize * gridWidth;
 		shapeHeight = vSize * gridHeight;
 

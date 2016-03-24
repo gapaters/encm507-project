@@ -6,7 +6,7 @@ class MainGamePage{
 	int startTime;
 	int timeRemaining = 20;
 	int transition = 0;
-	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
+	int[] scoreStation = new int[4];
 	public PassengerGenerator generator;
 	public Passenger[] passengerList;
 
@@ -101,22 +101,22 @@ class MainGamePage{
 
 	int scoreStation1()
 	{
-		return scoreStation1;
+		return scoreStation[0];
 	}
 
 	int scoreStation2()
 	{
-		return scoreStation2;
+		return scoreStation[1];
 	}
 
 	int scoreStation3()
 	{
-		return scoreStation3;
+		return scoreStation[2];
 	}
 
 	int scoreStation4()
 	{
-		return scoreStation4;
+		return scoreStation[3];
 	}
 
 	void setStartingLocationsInPassengerQueue()
