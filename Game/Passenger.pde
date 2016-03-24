@@ -86,6 +86,7 @@ class Passenger
 		{
 			bx = mouseX;
 			by = mouseY;
+			//println("Moved, isInGrid?: " + this.isInGrid());
 		}
 	}
 
@@ -99,5 +100,12 @@ class Passenger
 			move();
 			active = false;
 		}
+	}
+
+	boolean isInGrid()
+	{
+		if ((bx >= gridWidth) && (bx + shapeWidth < 18 * gridWidth) && (by >= 3 * gridHeight) && (by + shapeHeight < 10 * gridHeight))
+			return true;
+		return false;
 	}
 }
