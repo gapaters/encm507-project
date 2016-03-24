@@ -7,8 +7,8 @@ class MainGamePage{
 	int timeRemaining = 20;
 	int transition = 0;
 	int scoreStation1 = 0, scoreStation2 = 0, scoreStation3 = 0, scoreStation4 = 0;
-	PassengerGenerator generator;
-	Passenger[] passengerList;
+	public PassengerGenerator generator;
+	public Passenger[] passengerList;
 
 	MainGamePage(){
 		station = new TextBox("");
@@ -18,8 +18,6 @@ class MainGamePage{
 		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
 		generator = new PassengerGenerator();
-		passengerList = generator.generate();
-		setStartingLocationsInPassengerQueue();
 	}
 
 	void display(){
@@ -129,9 +127,44 @@ class MainGamePage{
 		{
 			if(!passengerList[i].hadInitialLocationSet)
 			{
-				passengerList[i].setStartingLocation(xCounter * gridWidth, yCounter * gridHeight);
+				passengerList[i].setStartingLocation(xCounter + gridWidth, yCounter * gridHeight);
 				xCounter += passengerList[i].shapeWidth;
 			}
 		}
 	}
+
+	void addPassengers()
+	{
+		passengerList = concat(passengerList, generator.generate());
+		setStartingLocationsInPassengerQueue();
+	}
+
+	public Passenger[] concat(Passenger[] a, Passenger[] b) {
+		if (a == null)
+		{
+			if (b == null)
+			{
+				return null;
+			}
+			return b;
+		}
+
+		if (b == null)
+		{
+			return a;
+		}
+
+   		int aLen = a.length;
+   		int bLen = b.length;
+   		Passenger[] c= new Passenger[aLen+bLen];
+   		System.arraycopy(a, 0, c, 0, aLen);
+   		System.arraycopy(b, 0, c, aLen, bLen);
+   		return c;
+	}
+
+	void deletePassengers()
+	{
+		passengerList = null;
+	}
+
 }

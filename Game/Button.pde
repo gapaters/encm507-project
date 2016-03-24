@@ -48,6 +48,7 @@ class Button
 	{
 		if(buttonState == States.MAIN_GAME)
 		{
+			mainGamePage.addPassengers();
 			mainGamePage.setStartTime(millis());
 			gameState = buttonState;
 		}

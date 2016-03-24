@@ -6,8 +6,7 @@ class PassengerGenerator
 
 	Passenger[] generate()
 	{
-		println("Game.difficulty: " + Game.difficulty);
- 	 	int numberToGenerate = Game.difficulty * 7;
+ 	 	int numberToGenerate = Game.difficulty + 5;
 		Passenger[] passengerList = new Passenger[numberToGenerate];
 
 		for (int i = 0; i < numberToGenerate; i++)
@@ -39,7 +38,6 @@ class PassengerGenerator
 			  }
 			passengerList[i] = toAdd;
 		}
-		println("passengerList " + passengerList);
 		return passengerList;
 	}
 }
