@@ -1,3 +1,7 @@
+import ddf.minim.*;
+AudioPlayer player;
+Minim minim;
+
 int white = #FFFFFF;
 int black = #000000;
 int lightGray = #D3D3D3;
@@ -31,6 +35,9 @@ void setup()
   gameCompletionPage = new GameCompletionPage(mainGamePage);
 
   background = loadImage("media/ctrainBackground.jpg");
+  minim = new Minim(this);
+  player = minim.loadFile("media/rideOfTheValkyries.mp3", 2048);
+  player.loop();
 }
 
 void draw()
@@ -61,4 +68,11 @@ void draw()
       exit();	
   	break;	
   }
+}
+
+void stop()
+{
+  player.close();
+  minim.stop();
+  super.stop();
 }
