@@ -9,7 +9,7 @@ class Scoring{
 
 	int calculateFair(){
 		for(int i = 0; i < mainGamePage.passengerList.length; i++){
-			if(mainGamePage.passengerList[i].isInGrid()){
+			if(mainGamePage.passengerList[i].isOnTheTrain()){
 				score += fare;
 				println("Fare score");
 			}
@@ -17,7 +17,7 @@ class Scoring{
 
 		/*Passenger compare = mainGamePage.passengerList[0];
 		for(int i = 0; i < mainGamePage.passengerList.length; i++){
-			if( compare.isInGrid() && mainGamePage.passengerList[i].isInGrid()){ //&&
+			if( compare.isOnTheTrain() && mainGamePage.passengerList[i].isOnTheTrain()){ //&&
 				//(mainGamePage.passengerList[i].bx == (compare.bx + compare.shapeWidth))){
 				println("list x: " + mainGamePage.passengerList[i].bx);
 				println("list x + width: " + (mainGamePage.passengerList[i].bx + mainGamePage.passengerList[i].shapeWidth));
@@ -37,7 +37,7 @@ class Scoring{
 
 	int calculateEmptySpace(){
 		for(int i = 0; i < mainGamePage.passengerList.length; i++){
-			if(mainGamePage.passengerList[i].isInGrid()){
+			if(mainGamePage.passengerList[i].isOnTheTrain()){
 				area += (mainGamePage.passengerList[i].lineHeight * mainGamePage.passengerList[i].lineWidth);
 			}
 		}

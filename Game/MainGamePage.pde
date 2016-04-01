@@ -167,4 +167,15 @@ class MainGamePage{
 		passengerList = null;
 	}
 
+	void hidePreviousPassengers()
+	{
+		for (int i = 0; i < passengerList.length; i++)
+		{
+			if(!passengerList[i].isOnTheTrain())
+			{
+				passengerList[i].hide = true;
+			}
+		}
+	}
+
 }

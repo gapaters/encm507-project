@@ -4,6 +4,7 @@ class Passenger
 	boolean clicked = false;
 	boolean active = false;
 	boolean hadInitialLocationSet = false;
+	boolean hide = false;
 	float bx = width/20, by = height/2;
 	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
 	int passengerColor = #000000;
@@ -37,23 +38,26 @@ class Passenger
 
 	void display()
 	{
-		if (mousePressed && hovering())
+		if (!hide)
 		{
-			mousePressedAndHovering();
-		}
-		else if (mousePressed) {
-			redraw();
-		}
-		else if (!mousePressed)
-		{
-			mouseReleased();
-			bx -= bx%(gridWidth);
-			by -= by%(gridHeight);
-		}
+			if (mousePressed && hovering())
+			{
+				mousePressedAndHovering();
+			}
+			else if (mousePressed) {
+				redraw();
+			}
+			else if (!mousePressed)
+			{
+				mouseReleased();
+				bx -= bx%(gridWidth);
+				by -= by%(gridHeight);
+			}
 
-		fill(passengerColor);
-		rectMode(CORNER);
-  		rect(bx, by, shapeWidth, shapeHeight);
+			fill(passengerColor);
+			rectMode(CORNER);
+	  		rect(bx, by, shapeWidth, shapeHeight);
+  		}
 	}	
 
 	boolean hovering()
@@ -89,7 +93,7 @@ class Passenger
 		{
 			bx = mouseX;
 			by = mouseY;
-			//println("Moved, isInGrid?: " + this.isInGrid());
+			//println("Moved, isOnTheTrain?: " + this.isOnTheTrain());
 		}
 	}
 
@@ -105,7 +109,7 @@ class Passenger
 		}
 	}
 
-	boolean isInGrid()
+	boolean isOnTheTrain()
 	{
 		if ((bx >= gridWidth) && (bx + shapeWidth < 18 * gridWidth) && (by >= 3 * gridHeight) && (by + shapeHeight < 10 * gridHeight))
 			return true;
