@@ -24,9 +24,9 @@ void setup()
   gridHeight = height/13;
   //surface.setResizable(true);
   titlePage = new TitlePage();
-  levelSelectionPage = new LevelSelectionPage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
+  levelSelectionPage = new LevelSelectionPage(mainGamePage);
   transitionPage = new TransitionPage(mainGamePage);
   gameCompletionPage = new GameCompletionPage(mainGamePage);
 

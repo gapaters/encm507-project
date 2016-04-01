@@ -6,9 +6,11 @@ class LevelSelectionPage
 	String[] easyStations = {"Tuscany", "Dalhousie", "Brentwood", "University of Calgary"};
 	String[] mediumStations = {"Canyon Meadows", "Fish Creek - Lacombe", "Shawnessy", "Somerset - Bridlewood"};
 	String[] hardStations = {"8th Street", "6th Street", "3rd Street", "Center Street"};
+	MainGamePage mainGame_;
 
-  	LevelSelectionPage()
+  	LevelSelectionPage(MainGamePage mainGame)
 	{
+		mainGame_ = mainGame;
 		title = new TextBox("Level Selection");
 		
 		String[] levelNames = { "Easy", "Medium", "Hard" };
@@ -27,6 +29,7 @@ class LevelSelectionPage
 
 		playButton.display(height/30, width*3/4, height/1.2, width*0.35, height/10);
 		menuButton.display(height/30, width/4, height/1.2, width*0.35, height/10);
+		mainGame_.clearScore();
 	}
 
 	void update(){

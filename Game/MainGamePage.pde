@@ -119,6 +119,14 @@ class MainGamePage{
 		return scoreStation[3];
 	}
 
+	void clearScore()
+	{
+		scoreStation[0] = 0;
+		scoreStation[1] = 0;
+		scoreStation[2] = 0;
+		scoreStation[3] = 0;
+	}
+
 	void setStartingLocationsInPassengerQueue()
 	{
 		int xCounter = 1;
