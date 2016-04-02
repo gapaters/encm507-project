@@ -7,17 +7,16 @@ class MainGamePage{
 	int timeRemaining = 20;
 	int transition = 0;
 	int[] scoreStation = new int[4];
-	public PassengerGenerator generator;
-	public Passenger[] passengerList;
+	PassengerList passengerList_;
 
-	MainGamePage(){
+	MainGamePage(PassengerList passengerList){
+		passengerList_ = passengerList;
 		station = new TextBox("");
 		score = new TextBox("Score");
 		scoreNumber = new TextBox("0");
 		timer = new TextBox("Timer");
 		timerClock = new TextBox("0");
 		closeDoors = new Button("Closing Doors", States.TRANSITION_PAGE);
-		generator = new PassengerGenerator();
 	}
 
 	void display(){
@@ -54,19 +53,13 @@ class MainGamePage{
 	      		rect(x*gridWidth, y*gridHeight, gridWidth, gridHeight);
 	  		}
 	  	}
-
-
-	  	for (int i = 0; i < passengerList.length; i++)
-	  	{
-	  		passengerList[i].display();
-	  	}
-
+		passengerList.display();
 	}
 
 	int timer(){
 		int time = timeRemaining + (startTime - millis())/1000;
 		if(time <= 0){
-			mainGamePage.hidePreviousPassengers();
+			passengerList.hidePreviousPassengers();
 			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
 			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
 			mainGamePage.transition();
@@ -130,64 +123,4 @@ class MainGamePage{
 		scoreStation[2] = 0;
 		scoreStation[3] = 0;
 	}
-
-	void setStartingLocationsInPassengerQueue()
-	{
-		int xCounter = 1;
-		int yCounter = 9;
-		for (int i = 0; i < passengerList.length; i++)
-		{
-			if(!passengerList[i].hadInitialLocationSet)
-			{
-				passengerList[i].setStartingLocation(xCounter + gridWidth, yCounter * gridHeight);
-				xCounter += passengerList[i].shapeWidth;
-			}
-		}
-	}
-
-	void addPassengers()
-	{
-		passengerList = concat(passengerList, generator.generate());
-		setStartingLocationsInPassengerQueue();
-	}
-
-	public Passenger[] concat(Passenger[] a, Passenger[] b) {
-		if (a == null)
-		{
-			if (b == null)
-			{
-				return null;
-			}
-			return b;
-		}
-
-		if (b == null)
-		{
-			return a;
-		}
-
-   		int aLen = a.length;
-   		int bLen = b.length;
-   		Passenger[] c= new Passenger[aLen+bLen];
-   		System.arraycopy(a, 0, c, 0, aLen);
-   		System.arraycopy(b, 0, c, aLen, bLen);
-   		return c;
-	}
-
-	void deletePassengers()
-	{
-		passengerList = null;
-	}
-
-	void hidePreviousPassengers()
-	{
-		for (int i = 0; i < passengerList.length; i++)
-		{
-			if(!passengerList[i].isOnTheTrain())
-			{
-				passengerList[i].hide = true;
-			}
-		}
-	}
-
 }

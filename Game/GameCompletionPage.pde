@@ -36,6 +36,6 @@ class GameCompletionPage
 
 		playButton.display(height/30, width*3/4, height/1.2, width*0.35, height/10);
 		menuButton.display(height/30, width/4, height/1.2, width*0.35, height/10);
-		mainGame_.deletePassengers();
+		passengerList.deletePassengers();
 	}
 }

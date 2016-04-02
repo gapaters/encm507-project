@@ -5,7 +5,15 @@ class PassengerList
 
 	PassengerList()
 	{
+		generator = new PassengerGenerator();
+	}
 
+	void display()
+	{
+		for (int i = 0; i < passengerList.length; i++)
+	  	{
+	  		passengerList[i].display();
+	  	}
 	}
 
 	int length()

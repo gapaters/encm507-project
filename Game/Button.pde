@@ -48,13 +48,13 @@ class Button
 	{
 		if(buttonState == States.MAIN_GAME)
 		{
-			mainGamePage.addPassengers();
+			passengerList.addPassengers();
 			mainGamePage.setStartTime(millis());
 			gameState = buttonState;
 		}
 		else if (buttonState == States.TRANSITION_PAGE) 
 		{
-			mainGamePage.hidePreviousPassengers();
+			passengerList.hidePreviousPassengers();
 			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
 			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
 			mainGamePage.transition();
