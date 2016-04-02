@@ -66,11 +66,15 @@ class MainGamePage{
 	int timer(){
 		int time = timeRemaining + (startTime - millis())/1000;
 		if(time <= 0){
+			mainGamePage.hidePreviousPassengers();
+			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
+			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
 			mainGamePage.transition();
 			//println("transition");
 			if(mainGamePage.isFinished())
 			{
 				//println("game complete");
+				gameCompletionPage.emptyModifier = scoring.calculateEmptySpace();
 				gameState = States.GAME_COMPLETION;
 				//println(gameState);
 			}

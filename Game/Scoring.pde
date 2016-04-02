@@ -7,7 +7,7 @@ class Scoring{
 
 	}
 
-	int calculateFair(){
+	int calculateFare(){
 		for(int i = 0; i < mainGamePage.passengerList.length; i++){
 			if(mainGamePage.passengerList[i].isOnTheTrain()){
 				score += fare;

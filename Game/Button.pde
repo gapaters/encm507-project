@@ -55,7 +55,7 @@ class Button
 		else if (buttonState == States.TRANSITION_PAGE) 
 		{
 			mainGamePage.hidePreviousPassengers();
-			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFair();
+			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
 			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
 			mainGamePage.transition();
 			//println("transition");
