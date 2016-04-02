@@ -15,18 +15,29 @@ class Scoring{
 			}
 		}
 
-		/*Passenger compare = mainGamePage.passengerList[0];
-		for(int i = 0; i < mainGamePage.passengerList.length; i++){
-			if( compare.isOnTheTrain() && mainGamePage.passengerList[i].isOnTheTrain()){ //&&
-				//(mainGamePage.passengerList[i].bx == (compare.bx + compare.shapeWidth))){
-				println("list x: " + mainGamePage.passengerList[i].bx);
-				println("list x + width: " + (mainGamePage.passengerList[i].bx + mainGamePage.passengerList[i].shapeWidth));
-				println("compare x + width: " + (compare.bx + compare.shapeWidth));
-				//&& (mainGamePage.passengerList[i].passengerColor == (compare.bx + compare.passengerColor))){
-				score += adjacency;
-			}
+		Passenger compare = mainGamePage.passengerList[0];
+		println("length is " + mainGamePage.passengerList.length);
+		for(int i = 0; i < mainGamePage.passengerList.length-1; i++){
 			compare = mainGamePage.passengerList[i];
-		}*/
+			for(int j = 1; j < mainGamePage.passengerList.length-1; j++){
+				//println(i);
+				if(i == j){
+					j++;
+				}
+				if( compare.isOnTheTrain() && mainGamePage.passengerList[j].isOnTheTrain() &&
+					((mainGamePage.passengerList[j].bx == (compare.bx + compare.shapeWidth) ||
+					(mainGamePage.passengerList[j].by == (compare.by + compare.shapeHeight)))) &&
+					(compare.passengerColor == mainGamePage.passengerList[j].passengerColor)){
+					println("list x: " + mainGamePage.passengerList[j].bx);
+					println("list x + width: " + (mainGamePage.passengerList[j].bx + mainGamePage.passengerList[j].shapeWidth));
+					println("compare x: " + compare.bx);
+					println("compare x + width: " + (compare.bx + compare.shapeWidth));
+					//&& (mainGamePage.passengerList[i].passengerColor == (compare.bx + compare.passengerColor))){
+					score += adjacency;
+				}
+				
+			}
+		}
 
 
 
