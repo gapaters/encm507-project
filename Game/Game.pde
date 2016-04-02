@@ -20,7 +20,7 @@ float gridWidth, gridHeight;
 static int difficulty = 1;
 int fare = 4;
 Scoring scoring = new Scoring();
-PassengerList passengerList;
+PassengerList passengerList = new PassengerList();
 
 void setup()
 {
@@ -30,8 +30,7 @@ void setup()
   //surface.setResizable(true);
   titlePage = new TitlePage();
   instructionsPage = new InstructionsPage();
-  passengerList = new PassengerList();
-  mainGamePage = new MainGamePage(passengerList);
+  mainGamePage = new MainGamePage();
   levelSelectionPage = new LevelSelectionPage(mainGamePage);
   transitionPage = new TransitionPage(mainGamePage);
   gameCompletionPage = new GameCompletionPage(mainGamePage);

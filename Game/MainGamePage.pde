@@ -7,10 +7,8 @@ class MainGamePage{
 	int timeRemaining = 20;
 	int transition = 0;
 	int[] scoreStation = new int[4];
-	PassengerList passengerList_;
 
-	MainGamePage(PassengerList passengerList){
-		passengerList_ = passengerList;
+	MainGamePage(){
 		station = new TextBox("");
 		score = new TextBox("Score");
 		scoreNumber = new TextBox("0");
