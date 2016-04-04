@@ -119,19 +119,57 @@ class Passenger
 	}
 
 	boolean overlap(){
-		for(int i = 0; i < passengerList.length(); i++){
-			if((((this.bx + shapeWidth) < (passengerList.at(i).bx + shapeWidth)) || 
-					((this.bx + shapeWidth) > (passengerList.at(i).bx + shapeWidth))) &&
-				(((this.by + shapeHeight) < (passengerList.at(i).by + shapeHeight)) ||
-					((this.by + shapeHeight) > (passengerList.at(i).by + shapeHeight)))){
-				println("overlap");
-				println(i);
-				this.active=false;
-				this.clicked=false;
-				return true;
+		for(int i = 0; i < passengerList.length(); i++)
+		{
+			if (!passengerList.at(i).hide)
+			{
+				if(horizontalConstraint(passengerList.at(i)) && verticalConstraint(passengerList.at(i)))
+				{
+					println("overlap");
+					println(i);
+					this.active=false;
+					this.clicked=false;
+					return true;
+				}
 			}
 		}
 		println("no overlap");
 		return false;
+	}
+	
+	boolean horizontalConstraint(Passenger conflict)
+	{
+		if((((gridMouseX() + this.shapeWidth) > conflict.bx) && (gridMouseX() < conflict.bx)) ||
+			((gridMouseX() < (conflict.bx + conflict.shapeWidth)) && ((gridMouseX() + this.shapeWidth) > conflict.bx)))
+		{
+			println("LeftOverlap: " + (((gridMouseX() + this.shapeWidth) > conflict.bx) && (gridMouseX() < conflict.bx)));
+			println("RightOverlap: " + ((gridMouseX() < (conflict.bx + conflict.shapeWidth)) && ((gridMouseX() + this.shapeWidth) > conflict.bx)));
+			return true;
+		}
+		return false;
+	}
+
+	boolean verticalConstraint(Passenger conflict)
+	{
+		if((((gridMouseY() + this.shapeHeight) > conflict.by) && (gridMouseY() < conflict.by)) ||
+			((gridMouseY() < (conflict.by + conflict.shapeHeight)) && ((gridMouseY() + this.shapeHeight) > conflict.by)))
+		{
+			println("TopOverlap: " + (((gridMouseY() + this.shapeHeight) > conflict.by) && (gridMouseY() < conflict.by)));
+			println("BottomOverlap: " + ((gridMouseY() < (conflict.by + conflict.shapeHeight)) && ((gridMouseY() + this.shapeHeight) > conflict.by)));
+			return true;
+		}
+		return false;
+	}
+
+	float gridMouseX()
+	{
+		float mousex = mouseX;
+		return mousex - (mousex % gridWidth);
+	}
+
+	float gridMouseY()
+	{
+		float mousey = mouseY;
+		return mousey - (mousey % gridHeight);
 	}
 }
