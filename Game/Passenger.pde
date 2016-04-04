@@ -22,6 +22,8 @@ class Passenger
 
 	Passenger(int hSize, int vSize, int passengerColor)
 	{
+		lineHeight = vSize;
+		lineWidth = hSize;
 		shapeWidth = hSize * gridWidth;
 		shapeHeight = vSize * gridHeight;
 		this.passengerColor = passengerColor;
@@ -105,7 +107,7 @@ class Passenger
 	}
 
 	void redraw(){
-		if(active && !overlap()){
+		if(active && !overlap() && !seatBlocking()){
 			move();
 			active = false;
 		}
@@ -171,5 +173,29 @@ class Passenger
 	{
 		float mousey = mouseY;
 		return mousey - (mousey % gridHeight);
+	}
+
+	boolean seatBlocking(){
+		if(this.passengerColor == #FFFF00 && this.lineHeight == 3){
+			if(((gridMouseX() > 2*gridWidth) && (gridMouseX() < 8*gridWidth)) || 
+				((gridMouseX() > 9*gridWidth) && (gridMouseX() < 15*gridWidth))){
+				return true;
+			}
+		}
+		else if (this.passengerColor == #FFFF00 && this.lineWidth == 3){
+			if(((gridMouseY() > 2*gridHeight) && (gridMouseY() < 5*gridHeight)) || 
+				((gridMouseY() > 6*gridHeight) && (gridMouseY() < 9*gridHeight))){
+				return true;
+			}
+		}
+		else if (this.passengerColor == #0000FF) {
+			if((((gridMouseX() > 1*gridWidth) && (gridMouseX() < 8*gridWidth)) || 
+				((gridMouseX() > 8*gridWidth) && (gridMouseX() < 15*gridWidth))) &&
+				(((gridMouseY() > 2*gridHeight) && (gridMouseY() < 5*gridHeight)) || 
+				((gridMouseY() > 5*gridHeight) && (gridMouseY() < 9*gridHeight)))){
+				return true;
+			}
+		}
+		return false;
 	}
 }
