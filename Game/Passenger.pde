@@ -9,6 +9,7 @@ class Passenger
 	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
 	int passengerColor = #000000;
 	int lineHeight, lineWidth;
+	int id;
 
 	Passenger(int hSize, int vSize)
 	{
@@ -16,6 +17,7 @@ class Passenger
 		lineWidth = hSize;
 		shapeWidth = hSize * gridWidth;
 		shapeHeight = vSize * gridHeight;
+		id = passengerId++;
 
 		rectMode(CORNER);
 	}
@@ -27,6 +29,7 @@ class Passenger
 		shapeWidth = hSize * gridWidth;
 		shapeHeight = vSize * gridHeight;
 		this.passengerColor = passengerColor;
+		id = passengerId++;
 
 		rectMode(CORNER);
 	}

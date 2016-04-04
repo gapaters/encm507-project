@@ -19,6 +19,7 @@ String[] stations = new String[4];
 float gridWidth, gridHeight;
 static int difficulty = 1;
 int fare = 4;
+static int passengerId = 1;
 Scoring scoring = new Scoring();
 PassengerList passengerList = new PassengerList();
 
