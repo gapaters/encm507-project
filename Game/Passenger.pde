@@ -110,7 +110,7 @@ class Passenger
 	}
 
 	void redraw(){
-		if(active && !overlap() && !seatBlocking()){
+		if(active && !overlap() && !seatBlocking() && isInTheTrain()){
 			move();
 			active = false;
 		}
@@ -119,6 +119,13 @@ class Passenger
 	boolean isOnTheTrain()
 	{
 		if ((bx >= gridWidth) && (bx + shapeWidth < 18 * gridWidth) && (by >= 3 * gridHeight) && (by + shapeHeight < 10 * gridHeight))
+			return true;
+		return false;
+	}
+
+	boolean isInTheTrain()
+	{
+		if ((gridMouseX() >= gridWidth) && (gridMouseX() + this.shapeWidth < 18 * gridWidth) && (gridMouseY() >= 3 * gridHeight) && (gridMouseY() + this.shapeHeight < 10 * gridHeight))
 			return true;
 		return false;
 	}
