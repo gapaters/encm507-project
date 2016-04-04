@@ -57,6 +57,11 @@ class Button
 			passengerList.hidePreviousPassengers();
 			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
 			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
+			for(int i = 0; i < passengerList.length(); i++){
+				if(passengerList.at(i).isOnTheTrain()){
+					passengerList.at(i).levelLocking();
+				}
+			}
 			mainGamePage.transition();
 			//println("transition");
 			if(mainGamePage.isFinished())

@@ -5,6 +5,7 @@ class Passenger
 	boolean active = false;
 	boolean hadInitialLocationSet = false;
 	boolean hide = false;
+	boolean locked = false;
 	float bx = width/20, by = height/2;
 	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
 	int passengerColor = #000000;
@@ -110,7 +111,7 @@ class Passenger
 	}
 
 	void redraw(){
-		if(active && !overlap() && !seatBlocking() && staysWithinTrain()){
+		if(active && !overlap() && !seatBlocking() && staysWithinTrain() && !this.locked){
 			move();
 			active = false;
 		}
@@ -207,5 +208,9 @@ class Passenger
 			}
 		}
 		return false;
+	}
+
+	void levelLocking(){
+		this.locked = true;
 	}
 }
