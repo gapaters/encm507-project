@@ -126,7 +126,7 @@ class Passenger
 	boolean overlap(){
 		for(int i = 0; i < passengerList.length(); i++)
 		{
-			if (!passengerList.at(i).hide)
+			if (!passengerList.at(i).hide && (passengerList.at(i).id != this.id))
 			{
 				if(horizontalConstraint(passengerList.at(i)) && verticalConstraint(passengerList.at(i)))
 				{
