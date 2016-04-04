@@ -24,6 +24,10 @@ class MainGamePage{
 
 		score.displayBox(height/20, width*3/5, height/20, width/7, height/14);
 		scoreNumber.displayBox(height/20, width*3/5, height/7, width/7, height/10);
+		if((transition-1) >= 0){
+			scoreNumber.setText(str(scoreStation[transition-1]));
+		}
+		
 
 		timer.displayBox(height/20, width*4/5, height/20, width/7, height/14);
 		timerClock.displayBox(height/20, width*4/5, height/7, width/7, height/10);
