@@ -53,6 +53,8 @@ class Scoring{
 			}
 		}
 
-		return ((16 * 6) - area);
+		int temp = area;
+		area = 0;
+		return ((16 * 6) - temp);
 	}
 } 
