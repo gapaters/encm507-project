@@ -76,8 +76,10 @@ class Passenger
 
 	void mousePressedAndHovering()
 	{
+		println("pressed and hover");
 		if(hover)
 		{
+			println("active and clicked");
 			clicked = true;
 			active = true;
 		}
@@ -103,7 +105,7 @@ class Passenger
 	}
 
 	void redraw(){
-		if(active){
+		if(active && !overlap()){
 			move();
 			active = false;
 		}
@@ -113,6 +115,23 @@ class Passenger
 	{
 		if ((bx >= gridWidth) && (bx + shapeWidth < 18 * gridWidth) && (by >= 3 * gridHeight) && (by + shapeHeight < 10 * gridHeight))
 			return true;
+		return false;
+	}
+
+	boolean overlap(){
+		for(int i = 0; i < passengerList.length(); i++){
+			if((((this.bx + shapeWidth) < (passengerList.at(i).bx + shapeWidth)) || 
+					((this.bx + shapeWidth) > (passengerList.at(i).bx + shapeWidth))) &&
+				(((this.by + shapeHeight) < (passengerList.at(i).by + shapeHeight)) ||
+					((this.by + shapeHeight) > (passengerList.at(i).by + shapeHeight)))){
+				println("overlap");
+				println(i);
+				this.active=false;
+				this.clicked=false;
+				return true;
+			}
+		}
+		println("no overlap");
 		return false;
 	}
 }
