@@ -17,11 +17,15 @@ class Scoring{
 
 		Passenger compare = passengerList.at(0);
 		println("length is " + passengerList.length());
-		for(int i = 0; i < passengerList.length()-1; i++){
+		for(int i = 0; i < passengerList.length(); i++){
 			compare = passengerList.at(i);
-			for(int j = 1; j < passengerList.length()-1; j++){
+			for(int j = 1; j < passengerList.length(); j++){
 				//println(i);
-				if(i == j){
+				
+				if(i == j ){
+					if(j == passengerList.length() -1){
+					break;
+					}
 					j++;
 				}
 				if( compare.isOnTheTrain() && passengerList.at(j).isOnTheTrain() &&
