@@ -29,9 +29,9 @@ class GameCompletionPage
 		scoreBreakdown.display(height/30, width/2, height/2);
 		scoreBreakdown.setText(
 			"Score Breakdown\nStation 1: " + mainGame_.scoreStation1() + 
-			"\nStation 2: " + mainGame_.scoreStation2() + 
-			"\nStation 3: " + mainGame_.scoreStation3() + 
-			"\nStation 4: " + mainGame_.scoreStation4() +
+			"\nStation 2: " + (mainGame_.scoreStation2() - mainGame_.scoreStation1()) + 
+			"\nStation 3: " + (mainGame_.scoreStation3() - mainGame_.scoreStation2())+ 
+			"\nStation 4: " + (mainGame_.scoreStation4() - mainGame_.scoreStation3())+
 			"\nEmpty Space " + emptyModifier + 
 			"\nTotal Score " + (mainGame_.scoreStation4() - emptyModifier));
 
