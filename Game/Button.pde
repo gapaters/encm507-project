@@ -62,6 +62,7 @@ class Button
 					passengerList.at(i).levelLocking();
 				}
 			}
+			transitionPage.setTimeBonus(mainGamePage.timer()*2);
 			mainGamePage.transition();
 			//println("transition");
 			if(mainGamePage.isFinished())

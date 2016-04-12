@@ -69,6 +69,7 @@ class MainGamePage{
 					passengerList.at(i).levelLocking();
 				}
 			}
+			transitionPage.setTimeBonus(0);
 			mainGamePage.transition();
 			//println("transition");
 			if(mainGamePage.isFinished())

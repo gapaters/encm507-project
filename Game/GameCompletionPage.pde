@@ -33,7 +33,8 @@ class GameCompletionPage
 			"\nStation 3: " + (mainGame_.scoreStation3() - mainGame_.scoreStation2())+ 
 			"\nStation 4: " + (mainGame_.scoreStation4() - mainGame_.scoreStation3())+
 			"\nEmpty Space " + emptyModifier + 
-			"\nTotal Score " + (mainGame_.scoreStation4() - emptyModifier));
+			"\nTotal Time Bonus: " + scoring.getBonus() + 
+			"\nTotal Score " + (mainGame_.scoreStation4() - emptyModifier + scoring.getBonus()));
 
 
 		playButton.display(height/30, width*3/4, height/1.2, width*0.35, height/10);

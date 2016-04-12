@@ -2,6 +2,7 @@ class Scoring{
 	int score = 0;
 	int adjacency = 3;
 	int area = 0;
+	int bonus = 0;
 
 	Scoring(){
 
@@ -45,9 +46,9 @@ class Scoring{
 
 
 
-		int fairScore = score;
+		int fareScore = score;
 		score = 0;
-		return fairScore;
+		return fareScore;
 	}
 
 	int calculateEmptySpace(){
@@ -60,5 +61,13 @@ class Scoring{
 		int temp = area;
 		area = 0;
 		return ((16 * 6) - temp);
+	}
+
+	void addBonus(int time){
+		bonus += time;
+	}
+
+	int getBonus(){
+		return bonus;
 	}
 } 
