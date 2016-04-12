@@ -30,8 +30,10 @@ class Scoring{
 					j++;
 				}
 				if( compare.isOnTheTrain() && passengerList.at(j).isOnTheTrain() &&
-					((passengerList.at(j).bx == (compare.bx + compare.shapeWidth) ||
-					(passengerList.at(j).by == (compare.by + compare.shapeHeight)))) &&
+					((passengerList.at(j).bx == (compare.bx + compare.shapeWidth) && 
+						verticalCheck(passengerList.at(j), compare)||
+					(passengerList.at(j).by == (compare.by + compare.shapeHeight) &&
+						horizontalCheck(passengerList.at(j), compare)))) &&
 					(compare.passengerColor == passengerList.at(j).passengerColor)){
 					println("list x: " + passengerList.at(j).bx);
 					println("list x + width: " + (passengerList.at(j).bx + passengerList.at(j).shapeWidth));
@@ -69,5 +71,15 @@ class Scoring{
 
 	int getBonus(){
 		return bonus;
+	}
+
+	boolean verticalCheck(Passenger atList, Passenger compare){
+		return ((atList.by >= compare.by && atList.by <= compare.by + compare.shapeHeight)
+			|| (compare.by >= atList.by && compare.by <= atList.by + atList.shapeHeight));
+	}
+
+	boolean horizontalCheck(Passenger atList, Passenger compare){
+		return ((atList.bx >= compare.bx && atList.bx <= compare.bx + compare.shapeWidth)
+			|| (compare.bx >= atList.bx && compare.bx <= atList.bx + atList.shapeWidth));
 	}
 } 
