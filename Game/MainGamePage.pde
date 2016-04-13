@@ -131,4 +131,8 @@ class MainGamePage{
 		scoreStation[2] = 0;
 		scoreStation[3] = 0;
 	}
+
+	void setTimeRemaining(int time){
+		timeRemaining = time;
+	}
 }

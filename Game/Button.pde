@@ -50,6 +50,17 @@ class Button
 		{
 			passengerList.addPassengers();
 			mainGamePage.setStartTime(millis());
+			switch (Game.difficulty) {
+				case 1 :
+					mainGamePage.setTimeRemaining(20);
+				break;	
+				case 2 :
+					mainGamePage.setTimeRemaining(15);
+				break;	
+				case 3 :
+					mainGamePage.setTimeRemaining(10);
+				break;	
+			}
 			gameState = buttonState;
 		}
 		else if (buttonState == States.TRANSITION_PAGE) 
