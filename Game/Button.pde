@@ -27,7 +27,6 @@ class Button
 			else
 			{
 				clicked = false;
-				delay(300);
 			}
 		}
 		else if (mousePressed && !mouseHover()) 
@@ -80,6 +79,11 @@ class Button
 			{
 				gameState = buttonState;
 			}
+		}
+		else if(buttonState == States.LEVEL_SELECTION)
+		{
+			delay(300);
+			gameState = buttonState;
 		}
 		else 
 		{
