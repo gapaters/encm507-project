@@ -65,14 +65,7 @@ class Button
 		}
 		else if (buttonState == States.TRANSITION_PAGE) 
 		{
-			passengerList.hidePreviousPassengers();
-			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
-			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
-			for(int i = 0; i < passengerList.length(); i++){
-				if(passengerList.at(i).isOnTheTrain()){
-					passengerList.at(i).levelLocking();
-				}
-			}
+			mainGamePage.updatePassengersAndScoring();
 			transitionPage.setTimeBonus(mainGamePage.timer()*2);
 			mainGamePage.transition();
 			//println("transition");

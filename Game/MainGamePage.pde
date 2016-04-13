@@ -61,14 +61,7 @@ class MainGamePage{
 	int timer(){
 		int time = timeRemaining + (startTime - millis())/1000;
 		if(time <= 0){
-			passengerList.hidePreviousPassengers();
-			mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
-			println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
-			for(int i = 0; i < passengerList.length(); i++){
-				if(passengerList.at(i).isOnTheTrain()){
-					passengerList.at(i).levelLocking();
-				}
-			}
+			updatePassengersAndScoring();
 			transitionPage.setTimeBonus(0);
 			mainGamePage.transition();
 			//println("transition");
@@ -134,5 +127,17 @@ class MainGamePage{
 
 	void setTimeRemaining(int time){
 		timeRemaining = time;
+	}
+
+	void updatePassengersAndScoring()
+	{
+		passengerList.hidePreviousPassengers();
+		mainGamePage.scoreStation[mainGamePage.transition] = scoring.calculateFare();
+		println("transition :" + mainGamePage.scoreStation[mainGamePage.transition]);
+		for(int i = 0; i < passengerList.length(); i++){
+			if(passengerList.at(i).isOnTheTrain()){
+				passengerList.at(i).levelLocking();
+			}
+		}
 	}
 }
