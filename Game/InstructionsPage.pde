@@ -1,3 +1,5 @@
+// Class used to display elements on the instructions page
+
 class InstructionsPage
 {
 	TextBox title, objective, instructions, scoring, levels, rules;

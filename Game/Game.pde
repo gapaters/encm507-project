@@ -35,9 +35,9 @@ void setup()
   titlePage = new TitlePage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
-  levelSelectionPage = new LevelSelectionPage(mainGamePage);
-  transitionPage = new TransitionPage(mainGamePage);
-  gameCompletionPage = new GameCompletionPage(mainGamePage);
+  levelSelectionPage = new LevelSelectionPage();
+  transitionPage = new TransitionPage();
+  gameCompletionPage = new GameCompletionPage();
 
   // setup files to be loaded and played
   background = loadImage("media/ctrainBackground.jpg");

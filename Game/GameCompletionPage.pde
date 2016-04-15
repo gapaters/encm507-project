@@ -1,22 +1,22 @@
+// Class used to display elements on the completion page
+
 class GameCompletionPage
 {
 	TextBox title, scoreBreakdown;
 	Button playButton, menuButton;
-	MainGamePage mainGame_;
 	int emptyModifier = 0;
 
-  	GameCompletionPage(MainGamePage mainGame)
+  	GameCompletionPage()
 	{
-		mainGame_ = mainGame;
 		title = new TextBox("Game Finished!");
 		
 		scoreBreakdown = new TextBox(
-			"Score Breakdown\nStation 1: " + mainGame_.scoreStation1() + 
-			"\nStation 2: " + mainGame_.scoreStation2() + 
-			"\nStation 3: " + mainGame_.scoreStation3() + 
-			"\nStation 4: " + mainGame_.scoreStation4() +
+			"Score Breakdown\nStation 1: " + mainGamePage.scoreStation1() + 
+			"\nStation 2: " + mainGamePage.scoreStation2() + 
+			"\nStation 3: " + mainGamePage.scoreStation3() + 
+			"\nStation 4: " + mainGamePage.scoreStation4() +
 			"\nEmpty Space " + emptyModifier + 
-			"\nTotal Score " + (mainGame_.scoreStation4() - emptyModifier));
+			"\nTotal Score " + (mainGamePage.scoreStation4() - emptyModifier));
 
 		playButton = new Button("Play Again!", States.LEVEL_SELECTION);
 		menuButton = new Button("Return to Main Menu", States.TITLE_PAGE);
@@ -28,13 +28,13 @@ class GameCompletionPage
 		
 		scoreBreakdown.display(height/30, width/2, height/2);
 		scoreBreakdown.setText(
-			"Score Breakdown\nStation 1: " + mainGame_.scoreStation1() + 
-			"\nStation 2: " + (mainGame_.scoreStation2() - mainGame_.scoreStation1()) + 
-			"\nStation 3: " + (mainGame_.scoreStation3() - mainGame_.scoreStation2())+ 
-			"\nStation 4: " + (mainGame_.scoreStation4() - mainGame_.scoreStation3())+
+			"Score Breakdown\nStation 1: " + mainGamePage.scoreStation1() + 
+			"\nStation 2: " + (mainGamePage.scoreStation2() - mainGamePage.scoreStation1()) + 
+			"\nStation 3: " + (mainGamePage.scoreStation3() - mainGamePage.scoreStation2())+ 
+			"\nStation 4: " + (mainGamePage.scoreStation4() - mainGamePage.scoreStation3())+
 			"\nEmpty Space " + emptyModifier + 
 			"\nTotal Time Bonus: " + scoring.getBonus() + 
-			"\nTotal Score " + (mainGame_.scoreStation4() - emptyModifier + scoring.getBonus()));
+			"\nTotal Score " + (mainGamePage.scoreStation4() - emptyModifier + scoring.getBonus()));
 
 
 		playButton.display(height/30, width*3/4, height/1.2, width*0.35, height/10);
