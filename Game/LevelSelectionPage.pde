@@ -30,6 +30,7 @@ class LevelSelectionPage
 		playButton.display(height/30, width*3/4, height/1.2, width*0.35, height/10);
 		menuButton.display(height/30, width/4, height/1.2, width*0.35, height/10);
 		mainGamePage.clearScore();
+		scoring.resetScoreCounters();
 	}
 
 	void update(){

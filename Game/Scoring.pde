@@ -42,7 +42,8 @@ class Scoring{
 						verticalCheck(passengerList.at(j), compare)||
 					(passengerList.at(j).by == (compare.by + compare.shapeHeight) &&
 						horizontalCheck(passengerList.at(j), compare)))) &&
-					(compare.passengerColor == passengerList.at(j).passengerColor)){
+					(compare.passengerColor == passengerList.at(j).passengerColor))
+				{
 					println("list x: " + passengerList.at(j).bx);
 					println("list x + width: " + (passengerList.at(j).bx + passengerList.at(j).shapeWidth));
 					println("compare x: " + compare.bx);
@@ -94,5 +95,13 @@ class Scoring{
 	boolean horizontalCheck(Passenger atList, Passenger compare){
 		return ((atList.bx >= compare.bx && atList.bx <= compare.bx + compare.shapeWidth)
 			|| (compare.bx >= atList.bx && compare.bx <= atList.bx + atList.shapeWidth));
+	}
+
+	void resetScoreCounters()
+	{
+		score = 0;
+		adjacency = 3;
+		area = 0;
+		bonus = 0;
 	}
 } 
