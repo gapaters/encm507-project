@@ -1,3 +1,5 @@
+// Enum to control game state
+
 public enum States
 {
 	TITLE_PAGE, 

@@ -1,3 +1,5 @@
+// Class used to make text boxes
+
 class TextBox
 {
 	String textLabel;

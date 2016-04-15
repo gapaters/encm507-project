@@ -1,3 +1,5 @@
+// Class to manage the list of passengers
+
 class PassengerList
 {
 	public Passenger[] passengerList;
@@ -48,6 +50,7 @@ class PassengerList
 		}
 	}
 
+	// start placement of passengers on platform
 	void setStartingLocationsInPassengerQueue()
 	{
 		int xCounter = 1;
@@ -62,6 +65,7 @@ class PassengerList
 		}
 	}
 
+	// used to concatenate multiple passenger lists
 	public Passenger[] concat(Passenger[] a, Passenger[] b) {
 		if (a == null)
 		{
