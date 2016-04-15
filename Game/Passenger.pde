@@ -1,27 +1,20 @@
+// Class to handle passenger features, movement
+
 class Passenger
 {
+	// a lot of different boolean members to handle movement, locking, hiding, etc.
 	boolean hover = false;
 	boolean clicked = false;
 	boolean active = false;
 	boolean hadInitialLocationSet = false;
 	boolean hide = false;
 	boolean locked = false;
+	// current location of passenger (based on top left corner)
 	float bx = width/20, by = height/2;
-	float shapeWidth, shapeHeight; // will need to make variable based on grid shape
+	float shapeWidth, shapeHeight;
 	int passengerColor = #000000;
 	int lineHeight, lineWidth;
 	int id;
-
-	Passenger(int hSize, int vSize)
-	{
-		lineHeight = vSize;
-		lineWidth = hSize;
-		shapeWidth = hSize * gridWidth;
-		shapeHeight = vSize * gridHeight;
-		id = passengerId++;
-
-		rectMode(CORNER);
-	}
 
 	Passenger(int hSize, int vSize, int passengerColor)
 	{
@@ -42,7 +35,7 @@ class Passenger
 		hadInitialLocationSet = true;
 	}
 
-	void display()
+	void display() // handles when movement can happen
 	{
 		if (!hide)
 		{
@@ -82,10 +75,8 @@ class Passenger
 
 	void mousePressedAndHovering()
 	{
-		println("pressed and hover");
 		if(hover)
 		{
-			println("active and clicked");
 			clicked = true;
 			active = true;
 		}
@@ -101,7 +92,6 @@ class Passenger
 		{
 			bx = mouseX;
 			by = mouseY;
-			//println("Moved, isOnTheTrain?: " + this.isOnTheTrain());
 		}
 	}
 
@@ -110,35 +100,38 @@ class Passenger
 		clicked = false;
 	}
 
-	void redraw(){
-		if(active && !overlap() && !seatBlocking() && staysWithinTrain() && !this.locked){
+	void redraw() // will only move the passenger for certain conditions
+	{ 
+		if(active && !overlap() && !seatBlocking() && staysWithinTrain() && !this.locked) 
+		// if the passenger is the active passenger to move, does not overlap, can be placed in a valid location, and is not locked from a previous station, then move
+		{ 
 			move();
 			active = false;
 		}
 	}
 
-	boolean isOnTheTrain()
+	boolean isOnTheTrain() // ensures full passenger is on the train after station leaves
 	{
 		if ((bx >= gridWidth) && (bx + shapeWidth < 18 * gridWidth) && (by >= 3 * gridHeight) && (by + shapeHeight < 10 * gridHeight))
 			return true;
 		return false;
 	}
 
-	boolean staysWithinTrain()
+	boolean staysWithinTrain() // ensures full passenger stays within the train during placement
 	{
 		if ((gridMouseX() >= gridWidth) && (gridMouseX() + this.shapeWidth < 18 * gridWidth) && (gridMouseY() >= 3 * gridHeight) && (gridMouseY() + this.shapeHeight < 10 * gridHeight))
 			return true;
 		return false;
 	}
 
-	boolean overlap(){
+	boolean overlap() // checks to make sure passengers do not overlap
+	{
 		for(int i = 0; i < passengerList.length(); i++)
 		{
 			if (!passengerList.at(i).hide && (passengerList.at(i).id != this.id))
 			{
 				if(horizontalConstraint(passengerList.at(i)) && verticalConstraint(passengerList.at(i)))
 				{
-					println("overlap");
 					println(i);
 					this.active=false;
 					this.clicked=false;
@@ -146,47 +139,42 @@ class Passenger
 				}
 			}
 		}
-		println("no overlap");
 		return false;
 	}
 	
-	boolean horizontalConstraint(Passenger conflict)
+	boolean horizontalConstraint(Passenger conflict) // checks for horizontal overlap
 	{
 		if((((gridMouseX() + this.shapeWidth) > conflict.bx) && (gridMouseX() < conflict.bx)) ||
 			((gridMouseX() < (conflict.bx + conflict.shapeWidth)) && ((gridMouseX() + this.shapeWidth) > conflict.bx)))
 		{
-			println("LeftOverlap: " + (((gridMouseX() + this.shapeWidth) > conflict.bx) && (gridMouseX() < conflict.bx)));
-			println("RightOverlap: " + ((gridMouseX() < (conflict.bx + conflict.shapeWidth)) && ((gridMouseX() + this.shapeWidth) > conflict.bx)));
 			return true;
 		}
 		return false;
 	}
 
-	boolean verticalConstraint(Passenger conflict)
+	boolean verticalConstraint(Passenger conflict) // checks for vertical overlap
 	{
 		if((((gridMouseY() + this.shapeHeight) > conflict.by) && (gridMouseY() < conflict.by)) ||
 			((gridMouseY() < (conflict.by + conflict.shapeHeight)) && ((gridMouseY() + this.shapeHeight) > conflict.by)))
 		{
-			println("TopOverlap: " + (((gridMouseY() + this.shapeHeight) > conflict.by) && (gridMouseY() < conflict.by)));
-			println("BottomOverlap: " + ((gridMouseY() < (conflict.by + conflict.shapeHeight)) && ((gridMouseY() + this.shapeHeight) > conflict.by)));
 			return true;
 		}
 		return false;
 	}
 
-	float gridMouseX()
+	float gridMouseX() // returns corrected mouseX position based on grid coordinates
 	{
 		float mousex = mouseX;
 		return mousex - (mousex % gridWidth);
 	}
 
-	float gridMouseY()
+	float gridMouseY() // returns corrected mouseY position based on grid coordinates
 	{
 		float mousey = mouseY;
 		return mousey - (mousey % gridHeight);
 	}
 
-	boolean seatBlocking(){
+	boolean seatBlocking(){ // checks for different passengers whether they can be placed on seats or in aisles
 		if(this.passengerColor == #FFFF00 && this.lineHeight == 3){
 			if(((gridMouseX() > 2*gridWidth) && (gridMouseX() < 8*gridWidth)) || 
 				((gridMouseX() > 9*gridWidth) && (gridMouseX() < 15*gridWidth))){
@@ -210,7 +198,7 @@ class Passenger
 		return false;
 	}
 
-	void levelLocking(){
+	void levelLocking(){ // used to lock passengers in place after going to next station
 		this.locked = true;
 	}
 }
