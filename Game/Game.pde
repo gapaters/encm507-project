@@ -1,7 +1,9 @@
+// libraries for audio player
 import ddf.minim.*;
 AudioPlayer player;
 Minim minim;
 
+// other global variables
 int white = #FFFFFF;
 int black = #000000;
 int lightGray = #D3D3D3;
@@ -28,7 +30,8 @@ void setup()
   size(800, 600);
   gridWidth = width/18;
   gridHeight = height/13;
-  //surface.setResizable(true);
+
+  // setup all the menu pages
   titlePage = new TitlePage();
   instructionsPage = new InstructionsPage();
   mainGamePage = new MainGamePage();
@@ -36,17 +39,18 @@ void setup()
   transitionPage = new TransitionPage(mainGamePage);
   gameCompletionPage = new GameCompletionPage(mainGamePage);
 
+  // setup files to be loaded and played
   background = loadImage("media/ctrainBackground.jpg");
   minim = new Minim(this);
   player = minim.loadFile("media/rideOfTheValkyries.mp3", 2048);
   player.loop();
 }
 
+// loop to display different menus based on game state
 void draw()
 {
 	background(black);
   image(background, 0, 0); 
-  // cannot make it be background, since it complains when varying window size
   switch (gameState) {
   	case TITLE_PAGE :
   		titlePage.display();

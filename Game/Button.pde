@@ -70,13 +70,10 @@ class Button
 			mainGamePage.updatePassengersAndScoring();
 			transitionPage.setTimeBonus(mainGamePage.timer()*2);
 			mainGamePage.transition();
-			//println("transition");
 			if(mainGamePage.isFinished())
 			{
-				//println("game complete");
 				gameCompletionPage.emptyModifier = scoring.calculateEmptySpace();
 				gameState = States.GAME_COMPLETION;
-				//println(gameState);
 			}
 			else 
 			{
