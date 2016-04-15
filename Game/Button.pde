@@ -1,11 +1,13 @@
+// This class was used for all our buttons in the menu
+// It is also used to update the game state, and handle transitions
+
 class Button
 {
-	float coordX, coordY, buttonWidth, buttonHeight;
+	float coordX, coordY, buttonWidth, buttonHeight; // button location, dimensions
 	String buttonLabel;
 	TextBox buttonText;
 	States buttonState;
-	boolean clicked = false;
-	boolean pressed = false;
+	boolean clicked = false; // boolean to check if button has been clicked
 
 	Button(String label, States state)
 	{
@@ -17,9 +19,9 @@ class Button
 	void display(float textSize, float x, float y, float w, float h)
 	{
 		update();
-		if(mousePressed && mouseHover())
+		if(mousePressed && mouseHover()) // if mouse has been clicked and it is hovering over the button
 		{
-			if (!clicked)
+			if (!clicked) //ensures it has not been clicked from previously.
 			{
 				updateState();
 				clicked = true;
@@ -43,6 +45,7 @@ class Button
 		buttonHeight = h;
 	}
 
+	// handles menu transitions and game states
 	void updateState()
 	{
 		if(buttonState == States.MAIN_GAME)
@@ -91,7 +94,8 @@ class Button
 		}
 	}
 
-	void displayWithoutUpdatingState(float textSize, float x, float y, float w, float h)
+	// Used for radio buttons
+	void displayWithoutUpdatingState(float textSize, float x, float y, float w, float h) 
 	{
 		update();
 		if(mousePressed && mouseHover())
@@ -112,6 +116,7 @@ class Button
 		buttonHeight = h;
 	}
 
+	// checks if mouse is hovering over button
 	boolean mouseHover()
 	{
 		if(mouseX > (coordX - buttonWidth/2) && mouseX < (coordX + buttonWidth/2) && 
@@ -122,6 +127,7 @@ class Button
 		return false;
 	}
 
+	// update color of button
 	void update()
 	{
 		if (mouseHover() || clicked)
@@ -138,10 +144,5 @@ class Button
 	{
 		buttonLabel = text;
 		buttonText.setText(text);
-	}
-
-	void setState(States state)
-	{
-		buttonState = state;
 	}
 }
